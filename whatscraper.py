@@ -42,7 +42,10 @@ def scrape(url):
 			f.write(str.encode(nm+' : '+url+"\n"))
 			f.close()
 
+print("Initializing...")
+
 query = "intext:chat.whatsapp.com inurl:pastebin"
 
+print("Querying Google By Dorks ...")
 for url in search(query, tld="com", num=10, stop=None, pause=2):
 	scrape(url)
