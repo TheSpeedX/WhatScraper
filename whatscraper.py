@@ -22,6 +22,8 @@ def linkcheck(url):
 		r=r.read().decode('utf-8')
 		p=r.find('</h2>')
 		name=r[r.rfind('">',0,p)+2:p]
+		if name.strip()=="":
+			return ("","")
 		return (name,url)
 	return ("","")
 def pad(s):
