@@ -2,14 +2,17 @@ import time
 import re
 import urllib.request,urllib.parse
 
-try: 
-	from googlesearch import search 
-except ImportError:  
-	print("No module named 'google' found") 
+try:
+	from googlesearch import search
+except ImportError:
+	print("No module named 'google' found")
+	print("Please Install it By ")
+	print("\tpython3 -m pip install google")
+	exit()
 
 
 def linkcheck(url):
-	print('\n\nTrying URL: '+url+'\n')
+	print('\nTrying URL: '+url,end='\r')
 	try:
 		r = urllib.request.urlopen(url)
 	except:
@@ -32,13 +35,14 @@ def scrape(url):
 	for lmt in match:
 		lmt=pad(lmt)
 		nm,url=linkcheck(lmt)
-		if nm!='' and nm not in name:
-			print('Group Name: ',nm)
+		if nm!='':
+			print('Group Name: '+(nm+" "*(65-len(nm))))
 			print('Group Link: ',url)
 			f=open('scraped.txt','ab')
 			f.write(str.encode(nm+' : '+url+"\n"))
 			f.close()
+
 query = "intext:chat.whatsapp.com inurl:pastebin"
-for url in search(query, tld="com", num=10, stop=None, pause=2): 
-	print(url)
+
+for url in search(query, tld="com", num=10, stop=None, pause=2):
 	scrape(url)
