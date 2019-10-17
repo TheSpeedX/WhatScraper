@@ -1,4 +1,5 @@
 import time
+import sys
 import re
 import urllib.request,urllib.parse
 
@@ -41,6 +42,30 @@ def scrape(url):
 			f=open('scraped.txt','ab')
 			f.write(str.encode(nm+' : '+url+"\n"))
 			f.close()
+print(r"""
+
+ __      __.__            __   _________                                        
+/  \    /  \  |__ _____ _/  |_/   _____/ ________________  ______   ___________ 
+\   \/\/   /  |  \\__  \\   __\_____  \_/ ___\_  __ \__  \ \____ \_/ __ \_  __ \
+ \        /|   Y  \/ __ \|  | /        \  \___|  | \// __ \|  |_> >  ___/|  | \/
+  \__/\  / |___|  (____  /__|/_______  /\___  >__|  (____  /   __/ \___  >__|   
+       \/       \/     \/            \/     \/           \/|__|        \/       
+
+""")
+
+if len(sys.argv)>=2:
+	if "u" in sys.argv[1]:
+		print("Updating Please Wait...")
+		try:
+			txt=urllib.request.urlopen(url).read()
+			f=open(sys.argv[0],'wb')
+			f.write(txt)
+			f.close()
+			print("\tUpdate Successful")
+			print("Run "+sys.argv[0]+" Again..")
+		except:
+			print("Update Failed !!!")
+		exit()
 
 print("Initializing...")
 
@@ -48,4 +73,12 @@ query = "intext:chat.whatsapp.com inurl:pastebin"
 
 print("Querying Google By Dorks ...")
 for url in search(query, tld="com", num=10, stop=None, pause=2):
-	scrape(url)
+	try:
+		scrape(url)
+	except:
+		print("Some Exception Occured!!")
+		ch=input("Do You Want To Continue(Y/N): ")
+		if not  "Y" in ch:
+			exit()
+		else:
+			continue
