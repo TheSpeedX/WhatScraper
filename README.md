@@ -1,5 +1,5 @@
 # WhatScraper
-Simple Tool to Get WhatsApp Group Link 
+Simple Tool to Generate WhatsApp Group Link 
 
 ## Description
 This Tool Scraps Whatsapp Group Links From Google Results And Gives Working Links
@@ -12,14 +12,13 @@ python3 -m pip install google
 python3 whatscraper.py
 ```
 ### TODO
-[✓] WhatsApp Group Checking
+[✓] WhatsApp Group Checking  <br>
+[✓] Scrapping From Links in Google Searches <br>
 
-[✓] Scrapping From Links in Google Searches
-
-[ ] Add MultiThreading
-[ ] Generalize Searching Based On KeyWords
-[ ] Add More Search Engines
-[ ] Make it Interactive
+[ ] Add MultiThreading <br>
+[ ] Generalize Searching Based On KeyWords <br>
+[ ] Add More Search Engines <br>
+[ ] Make it User Interactive <br>
 
 
 #### Credits
