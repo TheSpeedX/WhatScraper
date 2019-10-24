@@ -41,7 +41,7 @@ def scrape(url):
 		if nm!='':
 			print('Group Name: '+(nm+" "*(65-len(nm))))
 			print('Group Link: ',url)
-			f=open('scraped.txt','ab')
+			f=open('scraped.txt','wb')
 			f.write(str.encode(nm+' : '+url+"\n"))
 			f.close()
 print(r"""
@@ -68,16 +68,18 @@ if len(sys.argv)>=2:
 		except:
 			print("Update Failed !!!")
 		exit()
-
-def start():
+availabledom=['pastebin','throwbin','pastr','pasteio','paste2','paste']
+def start(index):
 	print("Initializing...")
-	query = "intext:chat.whatsapp.com inurl:pastebin"
+	if index>=len(availabledom):
+		return
+	query = "intext:chat.whatsapp.com inurl:"+availabledom[index]
 	print("Querying Google By Dorks ...")
-	for url in search(query, tld="com", num=10, stop=None, pause=2):
+	for url in search(query, tld="com", num=10, stop=, pause=2):
 		scrape(url)
 threads= []
 
-for i in range(0,int(input('Enter the number of threads:- '))):
+for i in range(0,int(input('Enter the number of threads(1-'+str(len(availabledom))'):- '))):
 	thread = threading.Thread(target=start)
 	thread.start()
 	threads.append(thread)
