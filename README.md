@@ -15,7 +15,7 @@ python3 whatscraper.py
 [✓] WhatsApp Group Checking  <br>
 [✓] Scrapping From Links in Google Searches <br>
 
-[ ] Add MultiThreading <br>
+[✓] Add MultiThreading <br>
 [ ] Generalize Searching Based On KeyWords <br>
 [ ] Add More Search Engines <br>
 [ ] Make it User Interactive <br>
