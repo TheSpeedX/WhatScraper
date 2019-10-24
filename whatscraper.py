@@ -79,7 +79,7 @@ def start(index):
 		scrape(url)
 threads= []
 
-for i in range(0,int(input('Enter the number of threads(1-'+str(len(availabledom))'):- '))):
+for i in range(0,int(input('Enter the number of threads(1-'+str(len(availabledom))+'):- '))):
 	thread = threading.Thread(target=start,args=(i,))
 	thread.start()
 	threads.append(thread)
