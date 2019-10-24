@@ -75,12 +75,12 @@ def start(index):
 		return
 	query = "intext:chat.whatsapp.com inurl:"+availabledom[index]
 	print("Querying Google By Dorks ...")
-	for url in search(query, tld="com", num=10, stop=, pause=2):
+	for url in search(query, tld="com", num=10, stop=None, pause=2):
 		scrape(url)
 threads= []
 
 for i in range(0,int(input('Enter the number of threads(1-'+str(len(availabledom))'):- '))):
-	thread = threading.Thread(target=start)
+	thread = threading.Thread(target=start,args=(i,))
 	thread.start()
 	threads.append(thread)
 
