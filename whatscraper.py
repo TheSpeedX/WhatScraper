@@ -1,7 +1,7 @@
 import time
 import sys
 import re
-import urllib.request,urllib.parse
+import urllib.request,urllib.parse,threading
 
 try:
 	from googlesearch import search
@@ -69,18 +69,18 @@ if len(sys.argv)>=2:
 			print("Update Failed !!!")
 		exit()
 
-print("Initializing...")
-
-query = "intext:chat.whatsapp.com inurl:pastebin"
-
-print("Querying Google By Dorks ...")
-for url in search(query, tld="com", num=10, stop=None, pause=2):
-	try:
+def start():
+	print("Initializing...")
+	query = "intext:chat.whatsapp.com inurl:pastebin"
+	print("Querying Google By Dorks ...")
+	for url in search(query, tld="com", num=10, stop=None, pause=2):
 		scrape(url)
-	except:
-		print("Some Exception Occured!!")
-		ch=input("Do You Want To Continue(Y/N): ")
-		if not  "Y" in ch:
-			exit()
-		else:
-			continue
+threads= []
+
+for i in range(0,int(input('Enter the number of threads:- '))):
+	thread = threading.Thread(target=start)
+	thread.start()
+	threads.append(thread)
+
+for i in threads:
+	i.join()
