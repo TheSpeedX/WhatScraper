@@ -24,5 +24,5 @@ python3 whatscraper.py
 
 
 #### Credits
-Made With ❤ By SpeedX 
+Made With ❤ By SpeedX <br>
 Improved By HanzHaxors
