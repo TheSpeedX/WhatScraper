@@ -2,6 +2,9 @@ import time
 import sys
 import re,os
 import urllib.request,urllib.parse,threading
+from colorama import Fore, init
+
+init()
 
 try:
 	from googlesearch import search
@@ -50,16 +53,17 @@ def scrape(txt):
 			f=open(SAVE,'ab')
 			f.write(str.encode(nm+' : '+url+"\n"))
 			f.close()
-print(r"""
+print(f"""
 
- __      __.__            __   _________                                        
+{Fore.LIGHTGREEN_EX} __      __.__            __   _________                                        
 /  \    /  \  |__ _____ _/  |_/   _____/ ________________  ______   ___________ 
-\   \/\/   /  |  \\__  \\   __\_____  \_/ ___\_  __ \__  \ \____ \_/ __ \_  __ \
- \        /|   Y  \/ __ \|  | /        \  \___|  | \// __ \|  |_> >  ___/|  | \/
+\   \/\/   /  |  \\\\__  \\\\   __\_____  \_/ ___\_  __ \__  \ \____ \_/ __ \_  __ \\
+{Fore.LIGHTWHITE_EX} \        /|   Y  \/ __ \|  | /        \  \___|  | \// __ \|  |_> >  ___/|  | \/
   \__/\  / |___|  (____  /__|/_______  /\___  >__|  (____  /   __/ \___  >__|   
        \/       \/     \/            \/     \/           \/|__|        \/       
-
-""")
+Compiled by HanzHaxors (https://github.com/HanzHaxors)
+Coded by TheSpeedX (https://github.com/TheSpeedX)
+{Fore.RESET}""")
 
 if len(sys.argv)>=2:
 	if "u" in sys.argv[1]:
