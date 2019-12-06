@@ -16,6 +16,7 @@ python3 whatscraper.py
 [✓] Scrapping From Links in Google Searches <br>
 
 [✓] Add MultiThreading <br>
+[✓] .exe File for Windows Users That Can't Download Python <br>
 [ ] Add Proxies Maybe Use Prawler<br>
 [ ] Generalize Searching Based On KeyWords <br>
 [ ] Add More Search Engines <br>
@@ -24,3 +25,4 @@ python3 whatscraper.py
 
 #### Credits
 Made With ❤ By SpeedX 
+Improved By HanzHaxors
