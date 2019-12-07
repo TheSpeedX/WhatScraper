@@ -17,9 +17,12 @@ except ImportError:
 SAVE="scrapped.txt"
 
 def linkcheck(url):
-	print('\nTrying URL: '+url,end='\r')
+	print(Fore.LIGHTCYAN_EX+'\n[#] Trying URL: '+Fore.LIGHTGREEN_EX+url,end='\r')
 	try:
 		r = urllib.request.urlopen(url)
+	except KeyboardInterrupt:
+			print(Fore.LIGHTRED_EX+'[!] Closing...')
+			exit()
 	except:
 		return ("","")
 	if(r.getcode()!=404):
@@ -48,11 +51,15 @@ def scrape(txt):
 		lmt=pad(lmt)
 		nm,url=linkcheck(lmt)
 		if nm!='':
-			print('Group Name: '+(nm+" "*(65-len(nm))))
-			print('Group Link: ',url)
+			print(Fore.LIGHTYELLOW_EX+'[$] Group Name: '+Fore.BLUE+(nm+" "*(65-len(nm))))
+			print(Fore.LIGHTYELLOW_EX+'[$] Group Link: '+Fore.BLUE,url)
 			f=open(SAVE,'ab')
 			f.write(str.encode(nm+' : '+url+"\n"))
 			f.close()
+			
+			f2=open('urls.txt', 'ab')
+			f2.write(str.encode(url+"\n"))
+			f2.close()
 print(f"""
 
 {Fore.LIGHTGREEN_EX} __      __.__            __   _________                                        
