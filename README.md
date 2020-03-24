@@ -8,6 +8,7 @@ This Tool Scraps Whatsapp Group Links From Google Results And Gives Working Link
 
 ```
 git clone https://github.com/TheSpeedX/WhatScraper.git
+cd WhatScraper
 python3 -m pip install google
 python3 whatscraper.py
 ```
