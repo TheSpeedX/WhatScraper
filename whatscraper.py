@@ -122,7 +122,7 @@ def main():
 			i.join()
 	elif inp==2:
 		for i in range(0,int(input('Enter the number of threads(1-'+str(len(site_urls))+'):- '))):
-			thread = threading.Thread(target=start,args=(i,))
+			thread = threading.Thread(target=scrap_from_link,args=(i,))
 			thread.start()
 			threads.append(thread)
 
