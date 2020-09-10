@@ -81,15 +81,15 @@ def scrap_from_link(index):
 	
 def main():
 	print('''
-	
-	
-	 _       ____          __  _____                                
-	| |     / / /_  ____ _/ /_/ ___/______________ _____  ___  _____
-	| | /| / / __ \/ __ `/ __/\__ \/ ___/ ___/ __ `/ __ \/ _ \/ ___/
-	| |/ |/ / / / / /_/ / /_ ___/ / /__/ /  / /_/ / /_/ /  __/ /    
-	|__/|__/_/ /_/\__,_/\__//____/\___/_/   \__,_/ .___/\___/_/     
-						    /_/                 
-	
+   
+   
+    _       ____          __  _____                                
+   | |     / / /_  ____ _/ /_/ ___/______________ _____  ___  _____
+   | | /| / / __ \/ __ `/ __/\__ \/ ___/ ___/ __ `/ __ \/ _ \/ ___/
+   | |/ |/ / / / / /_/ / /_ ___/ / /__/ /  / /_/ / /_/ /  __/ /    
+   |__/|__/_/ /_/\__,_/\__//____/\___/_/   \__,_/ .___/\___/_/     
+   					    /_/                 
+   
 	''')
 
 	if len(sys.argv) >= 2:
@@ -110,10 +110,10 @@ def main():
 	
 	threads = []
 	print("""
-		1> Scrape From Google
-		2> Scrape From Group Sharing Sites [BEST]
-		3> Check From File
-		4> Update WhatScrapper
+   1> Scrape From Google
+   2> Scrape From Group Sharing Sites [BEST]
+   3> Check From File
+   4> Update WhatScrapper
 	""")
 	
 	try:
