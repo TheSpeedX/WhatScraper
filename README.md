@@ -23,6 +23,8 @@ python3 whatscraper.py
  - [ ] Make it User Interactive <br>
  - [ ] Make GUI option <br>
 
+### Contributors
+- [HanzHaxors](https://github.com/HanzHaxors)
 
 #### Credits
 Made With ❤ By SpeedX and Our Best Contributors
