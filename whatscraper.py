@@ -6,150 +6,207 @@ import urllib.request,urllib.parse,threading
 try:
 	from googlesearch import search
 except ImportError:
-	print("No module named 'google' found")
-	print("Please Install it By ")
-	print("\tpython3 -m pip install google")
+	print("[!] No module named \"google\" found")
+	print("    Please Install it by using:")
+	print("\n    python3 -m pip install google")
 	exit()
 
-SAVE="scrapped.txt"
+SAVE = "scrapped.txt" # Default
+availabledom = ["pastebin",
+		"throwbin",
+		"pastr",
+		"pasteio",
+		"paste2",
+		"paste"]
+site_urls = ["https://whatsgrouplink.com/",
+	     "https://whatsappgroups.app/job-alerts-whatsapp-group-links/",
+	     "https://whatsappgroups.app/whatsapp-group-links/",
+	     "https://whatsappgroups.app/pubg-whatsapp-group-links-india/",
+	     "https://whatsappgroups.app/funny-jokes-whatsapp-group-links/",
+	     "https://allinonetrickz.com/new-whatsapp-groups-invite-links/"]
 
 def linkcheck(url):
-	print('\nTrying URL: '+url,end='\r')
+	print("\nTrying URL:", url, end='\r')
 	try:
 		r = urllib.request.urlopen(url)
 	except:
-		return ("","")
-	if(r.getcode()!=404):
-		r=r.read().decode('utf-8')
-		p=r.find('</h2>')
-		name=r[r.rfind('">',0,p)+2:p]
-		if name.strip()=="":
-			return ("","")
+		return ('','')
+	if(r.getcode() != 404):
+		r = r.read().decode("utf-8")
+		p = r.find("</h2>")
+		name=r[r.rfind("\">", 0, p) + 2:p]
+		if name.strip() == '':
+			return ('','')
 		return (name,url)
-	return ("","")
+	return ('','')
 def pad(s):
 	if not "invite" in s:
-		p=s.find('.com')
-		s=s[:p+4]+"/invite"+s[p+4:]
+		p = s.find(".com")
+		s = s[:p + 4] + "/invite" + s[p + 4:]
 	return s
 def scrape(txt):
-	if type(txt)==type(b''):
-		txt=txt.decode('utf-8')
-	match=[]
-	match2=re.findall(r'(https:\/\/chat\.whatsapp\.com\/(invite\/)?[a-zA-Z0-9]{22})',txt)
-	match=[item[0] for item in match2]
-	match=list(set(match))
+	if type(txt) == type(b''):
+		txt = txt.decode("utf-8")
+	match = []
+	match2 = re.findall(r"(https:\/\/chat\.whatsapp\.com\/(invite\/)?[a-zA-Z0-9]{22})", txt)
+	match = [item[0] for item in match2]
+	match = list(set(match))
 	for lmt in match:
-		lmt=pad(lmt)
-		nm,url=linkcheck(lmt)
-		if nm!='':
-			print('Group Name: '+(nm+" "*(65-len(nm))))
-			print('Group Link: ',url)
-			f=open(SAVE,'ab')
-			f.write(str.encode(nm+' : '+url+"\n"))
+		lmt = pad(lmt)
+		nm, url = linkcheck(lmt)
+		if nm != '':
+			print("[i] Group Name: " + (nm + ' ' * (65-len(nm))))
+			print("[i] Group Link: ", url)
+			f = open(SAVE, "ab")
+			f.write(str.encode(nm + " : " + url + '\n'))
 			f.close()
 
-availabledom=['pastebin','throwbin','pastr','pasteio','paste2','paste']
 
-site_urls=["https://whatsgrouplink.com/","https://whatsappgroups.app/job-alerts-whatsapp-group-links/","https://whatsappgroups.app/whatsapp-group-links/","https://whatsappgroups.app/pubg-whatsapp-group-links-india/","https://whatsappgroups.app/funny-jokes-whatsapp-group-links/","https://allinonetrickz.com/new-whatsapp-groups-invite-links/"]
 def start(index):
-	print("Initializing...")
-	if index>=len(availabledom):
+	print("[*] Initializing...")
+	if index >= len(availabledom):
 		return
-	query = "intext:chat.whatsapp.com inurl:"+availabledom[index]
-	print("Querying Google By Dorks ...")
+	query = "intext:chat.whatsapp.com inurl:" + availabledom[index]
+	print("[*] Querying Google By Dorks ...")
 	for url in search(query, tld="com", num=10, stop=None, pause=2):
-		txt=urllib.request.urlopen(url).read().decode('utf8')
+		txt = urllib.request.urlopen(url).read().decode("utf8")
 		scrape(txt)
 
 def scrap_from_link(index):
-	print("Initializing...")
-	if index>=len(site_urls):
+	print("[*] Initializing...")
+	if index >= len(site_urls):
 		return
 	r = urllib.request.urlopen(site_urls[index]).read().decode()
 	scrape(r)
-	
+
+def get_terminal_size(fallback=(80, 24)):
+	for i in range(0, 3):
+		try:
+			columns, rows = os.get_terminal_size(i)
+		except OSError:
+			continue
+		break
+	else:  # set default if the loop completes which means all failed
+		columns, rows = fallback
+	return columns, rows
+
 def main():
-	print(r"""
+	terminal_size = get_terminal_size()
 	
-	
-	
-	 __      __.__            __   _________                                        
-	/  \    /  \  |__ _____ _/  |_/   _____/ ________________  ______   ___________ 
-	\   \/\/   /  |  \\__  \\   __\_____  \_/ ___\_  __ \__  \ \____ \_/ __ \_  __ \
-	 \        /|   Y  \/ __ \|  | /        \  \___|  | \// __ \|  |_> >  ___/|  | \/
-	  \__/\  / |___|  (____  /__|/_______  /\___  >__|  (____  /   __/ \___  >__|   
-		   \/       \/     \/            \/     \/           \/|__|        \/       
-	
+	if terminal_size[0] < 80:
+		print("""
+   
+   
+              __            
+   (   // __/(  _ _ _   _ _ 
+   |/|//)(//__)( / (//)(-/  
+                    /       
+   
+   
+		""")
+	else:
+		print("""
+   
+   
+    _       ____          __  _____                                
+   | |     / / /_  ____ _/ /_/ ___/______________ _____  ___  _____
+   | | /| / / __ \/ __ `/ __/\__ \/ ___/ ___/ __ `/ __ \/ _ \/ ___/
+   | |/ |/ / / / / /_/ / /_ ___/ / /__/ /  / /_/ / /_/ /  __/ /    
+   |__/|__/_/ /_/\__,_/\__//____/\___/_/   \__,_/ .___/\___/_/     
+						/_/                 
+   
 	""")
 
-	if len(sys.argv)>=2:
-		if "u" in sys.argv[1]:
-			print("Updating Please Wait...")
+	if len(sys.argv) >= 2:
+		if 'u' in sys.argv[1] or '-u' in sys.argv[1]:
+			print("[*] Updating Please Wait...", end='\r')
 			try:
-				txt=urllib.request.urlopen(url).read()
-				f=open(sys.argv[0],'wb')
+				# txt = urllib.request.urlopen(url).read() # What is `url`? its not even defined
+									   # It should be like this (look line 101)
+				txt = urllib.request.urlopen("https://github.com/TheSpeedX/WhatScraper/raw/master/whatscraper.py").read()
+				f = open(sys.argv[0], "wb")
 				f.write(txt)
 				f.close()
-				print("\tUpdate Successful")
-				print("Run "+sys.argv[0]+" Again..")
+				print("[$] Update Successful")
+				print("[i] Run " + sys.argv[0] + " Again..")
 			except:
-				print("Update Failed !!!")
+				print("[!] Update Failed !!!     ")
 			exit()
 	
-	threads= []
+	threads = []
 	print("""
-			1> Scrape From Google
-			2> Scrape From Group Sharing Sites [BEST]
-			3> Check From File
+   1> Scrape From Google
+   2> Scrape From Group Sharing Sites [BEST]
+   3> Check From File
+   4> Update WhatScrapper
 	""")
+	
 	try:
-		inp=int(input("Enter Choice: "))
+		inp = int(input("[#] Enter Choice: "))
 	except:
 		print("\t[!] Invalid Choice..")
 		exit()
 	
-	f=open(SAVE,'w')
+	newSave = str(input("[#] Enter Saving File (Default is scrapped.txt): "))
+	SAVE = "scrapped.txt" if newSave == '' else newSave
+	
+	f = open(SAVE, 'w')
 	f.write("Group Links Generated By WhatScrapper \nGet it at https://github.com/TheSpeedX/WhatScrapper\r\n")
 	f.close()
-	if inp==1:	
-		for i in range(0,int(input('Enter the number of threads(1-'+str(len(availabledom))+'):- '))):
-			thread = threading.Thread(target=start,args=(i,))
+	if inp == 1:	
+		for i in range(0, int(input("[#] Enter the number of threads(1-" + str(len(availabledom)) + "):- "))):
+			thread = threading.Thread(target=start, args=(i,))
 			thread.start()
 			threads.append(thread)
 
 		for i in threads:
 			i.join()
-	elif inp==2:
-		for i in range(0,int(input('Enter the number of threads(1-'+str(len(site_urls))+'):- '))):
-			thread = threading.Thread(target=scrap_from_link,args=(i,))
+	elif inp == 2:
+		for i in range(0, int(input("[#] Enter the number of threads(1-" + str(len(site_urls)) + "):- "))):
+			thread = threading.Thread(target=scrap_from_link, args=(i,))
 			thread.start()
 			threads.append(thread)
 
 		for i in threads:
 			i.join()
-	elif inp==3:
-		path=input("Enter Whatsapp Link Path: ").strip()
+	elif inp == 3:
+		path = input("[#] Enter Whatsapp Link File Path: ").strip()
 		if not os.path.isfile(path):
-			print('\tNo such file found...')
+			print("\t[!] No such file found...")
 			exit()
-		thn=int(input('Enter the number of threads: '))
-		op=open(path,"rb").read().decode('utf-8')
-		op=op.count('\n')//thn
-		f=open(SAVE,'w')
-		f.write("Group Links Generated By WhatScrapper \nGet it at https://github.com/TheSpeedX/WhatScrapper\r\n\r\n")
+		thn = int(input("[#] Enter the number of threads: "))
+		op = open(path, "rb").read().decode("utf-8")
+		op = op.count('\n') // thn
+		f = open(SAVE, 'w')
+		f.write("Group Links Scraped By WhatScrapper \nGet it at https://github.com/TheSpeedX/WhatScrapper\r\n\r\n")
 		f.close()
-		with open(path,"rb") as strm:
-			for i in range(thn-1):
+		with open(path, "rb") as strm:
+			for i in range(thn - 1):
 				head = [next(strm) for x in range(op)]
-				thread = threading.Thread(target=scrape,args=(b"\n".join(head),))
+				thread = threading.Thread(target=scrape, args=(b'\n'.join(head),))
 				thread.start()
 				threads.append(thread)
-			thread = threading.Thread(target=scrape,args=(strm.read(),))
+			thread = threading.Thread(target=scrape, args=(strm.read(),))
 			thread.start()
 			threads.append(thread)
 		for i in threads:
 			i.join()
+	elif inp == 4:
+		print("[*] Updating Please Wait...", end='\r')
+		try:
+			# txt = urllib.request.urlopen(url).read() # What is `url`? its not even defined
+								   # It should be like this (look line 101)
+			txt = urllib.request.urlopen("https://github.com/TheSpeedX/WhatScraper/raw/master/whatscraper.py").read()
+			f = open(sys.argv[0], "wb")
+			f.write(txt)
+			f.close()
+			print("[$] Update Successful")
+			print("[i] Run " + sys.argv[0] + " Again..")
+		except:
+			print("[!] Update Failed !!!     ")
+		exit()
+	else:
+		print("[!] Invalid Choice..")
 
-if __name__=="__main__":
+if __name__ == "__main__":
 	main()
