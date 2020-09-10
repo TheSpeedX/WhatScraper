@@ -78,9 +78,34 @@ def scrap_from_link(index):
 		return
 	r = urllib.request.urlopen(site_urls[index]).read().decode()
 	scrape(r)
-	
+
+def get_terminal_size(fallback=(80, 24)):
+	for i in range(0, 3):
+		try:
+			columns, rows = os.get_terminal_size(i)
+		except OSError:
+			continue
+		break
+	else:  # set default if the loop completes which means all failed
+		columns, rows = fallback
+	return columns, rows
+
 def main():
-	print('''
+	terminal_size = get_terminal_size()
+	
+	if terminal_size[0] < 80:
+		print("""
+   
+   
+              __            
+   (   // __/(  _ _ _   _ _ 
+   |/|//)(//__)( / (//)(-/  
+                    /       
+   
+   
+		""")
+	else:
+		print("""
    
    
     _       ____          __  _____                                
@@ -88,9 +113,9 @@ def main():
    | | /| / / __ \/ __ `/ __/\__ \/ ___/ ___/ __ `/ __ \/ _ \/ ___/
    | |/ |/ / / / / /_/ / /_ ___/ / /__/ /  / /_/ / /_/ /  __/ /    
    |__/|__/_/ /_/\__,_/\__//____/\___/_/   \__,_/ .___/\___/_/     
-   					    /_/                 
+						/_/                 
    
-	''')
+	""")
 
 	if len(sys.argv) >= 2:
 		if 'u' in sys.argv[1] or '-u' in sys.argv[1]:
