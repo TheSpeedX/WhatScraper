@@ -91,6 +91,7 @@ def get_terminal_size(fallback=(80, 24)):
 	return columns, rows
 
 def main():
+	global SAVE
 	terminal_size = get_terminal_size()
 	
 	if terminal_size[0] < 80:
@@ -177,9 +178,6 @@ def main():
 		thn = int(input("[#] Enter the number of threads: "))
 		op = open(path, "rb").read().decode("utf-8")
 		op = op.count('\n') // thn
-		f = open(SAVE, 'w')
-		f.write("Group Links Scraped By WhatScrapper \nGet it at https://github.com/TheSpeedX/WhatScrapper\r\n\r\n")
-		f.close()
 		with open(path, "rb") as strm:
 			for i in range(thn - 1):
 				head = [next(strm) for x in range(op)]
