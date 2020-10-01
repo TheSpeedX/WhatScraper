@@ -2,6 +2,7 @@ import time
 import sys
 import re,os
 import urllib.request,urllib.parse,threading
+from datetime import datetime
 
 try:
 	from googlesearch import search
@@ -11,7 +12,7 @@ except ImportError:
 	print("\n    python3 -m pip install google")
 	exit()
 
-SAVE = "scrapped.txt"
+SAVE = "scrapped_%s.txt" % datetime.now().strftime('%Y_%m_%d-%H_%M_%S')
 availabledom = ["pastebin",
 		"throwbin",
 		"pastr",
