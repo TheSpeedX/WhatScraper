@@ -23,6 +23,7 @@ python3 whatscraper.py [u|-u][g|-g|--gui]
 python3 whatscraper.py
 ```
 ##### With User Interface
+In order to use the UI, you need to `pip3 install wxPython` and its dependencies (around 74mb)
 ```bash
 python3 whatscraper.py [g|-g|--gui]
 ```
