@@ -1,4 +1,7 @@
 scrapped.txt
 test.txt
 __pycache__/
-
+venv/
+*.backup
+scrapped*
+.google-cookie
