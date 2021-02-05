@@ -12,6 +12,21 @@ cd WhatScraper
 python3 -m pip install google
 python3 whatscraper.py
 ```
+
+### Usage
+##### General
+```bash
+python3 whatscraper.py [u|-u][g|-g|--gui]
+```
+##### No User Interface
+```bash
+python3 whatscraper.py
+```
+##### With User Interface
+```bash
+python3 whatscraper.py [g|-g|--gui]
+```
+
 ### TODO
  - [x] ~~WhatsApp Group Checking~~  <br>
  - [x] ~~Scrapping From Links in Google Searches~~ <br>
@@ -27,5 +42,5 @@ python3 whatscraper.py
 ### Contributors
 - [HanzHaxors](https://github.com/HanzHaxors)
 
-#### Credits
+### Credits
 Made With ❤ By SpeedX and Our Best Contributors
