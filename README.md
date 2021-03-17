@@ -12,19 +12,36 @@ cd WhatScraper
 python3 -m pip install google
 python3 whatscraper.py
 ```
-### TODO
- - [x] WhatsApp Group Checking  <br>
- - [x] Scrapping From Links in Google Searches <br>
 
- - [x] Add MultiThreading <br>
+### Usage
+##### General
+```bash
+python3 whatscraper.py [u|-u][g|-g|--gui]
+```
+##### No User Interface
+```bash
+python3 whatscraper.py
+```
+##### With User Interface
+In order to use the UI, you need to `pip3 install wxPython` and its dependencies (around 74mb)
+```bash
+python3 whatscraper.py [g|-g|--gui]
+```
+
+### TODO
+ - [x] ~~WhatsApp Group Checking~~  <br>
+ - [x] ~~Scrapping From Links in Google Searches~~ <br>
+
+ - [x] ~~Add MultiThreading~~ <br>
  - [ ] Add Proxies Maybe Use Prawler<br>
  - [ ] Generalize Searching Based On Keywords <br>
  - [ ] Add More Search Engines <br>
- - [ ] Make it User Interactive <br>
- - [ ] Make GUI option <br>
+ - [x] ~~Make it User Interactive~~ <br>
+ - [x] ~~Make GUI option~~ <br>
+ - [ ] Add check from file option in GUI<br>
 
 ### Contributors
 - [HanzHaxors](https://github.com/HanzHaxors)
 
-#### Credits
+### Credits
 Made With ❤ By SpeedX and Our Best Contributors
