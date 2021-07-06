@@ -15,7 +15,7 @@ python3 whatscraper.py
 ### TODO
  - [x] WhatsApp Group Checking  <br>
  - [x] Scrapping From Links in Google Searches <br>
-
+ - [x] Check And Retrieve specific Group Details(+Download DP)  <br>
  - [x] Add MultiThreading <br>
  - [ ] Add Proxies Maybe Use Prawler<br>
  - [ ] Generalize Searching Based On Keywords <br>
