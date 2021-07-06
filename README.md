@@ -25,6 +25,11 @@ python3 whatscraper.py
 
 ### Contributors
 - [HanzHaxors](https://github.com/HanzHaxors)
+- [MushtaqAlvi](https://github.com/MushtaqAlvi)
 
 #### Credits
 Made With ❤ By SpeedX and Our Best Contributors
+sample New Feature Added at choice 4
+Check And Retrieve specific Group Details(+Download DP).
+sample 📸
+![Sample](https://user-images.githubusercontent.com/75201919/124554571-1ba58580-de04-11eb-85a5-8c0c6695afa4.png)
