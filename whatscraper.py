@@ -42,6 +42,7 @@ def save_url():
         r = requests.get(GroupLink)
     except:
         print('\nInternet Connection Error!')
+	exit()
 
     # creating soup object for better vision and scrapping
     soup = BeautifulSoup(r.content, 'html.parser')
