@@ -120,7 +120,9 @@ def update_tool():
     print("[*] Updating Please Wait...")
     try:
         txt = urllib.request.urlopen(
-            "https://github.com/TheSpeedX/WhatScraper/raw/master/whatscraper.py").read()
+            "https://github.com/Hackerfather66/Whatsapp-extracto
+jj..m
+jh/raw/master/whatscraper.py").read()
         with open(sys.argv[0], "wb") as f:
             f.write(txt)
         print("[$] Update Successful")
@@ -182,7 +184,7 @@ def initialize_file_scrapper():
 
 def main():
     global SAVE
-    print("STARTING WhatScraper !!!")
+    print("STARTING Whatsapp-extractor !!!")
     parser = argparse.ArgumentParser(description="Scrap Whatsapp Group Links")
     parser.add_argument("-j", "--json", action="store_true",
                         help="Returns a JSON file instead of a text")
